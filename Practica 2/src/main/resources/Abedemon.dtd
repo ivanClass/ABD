@@ -1,0 +1,19 @@
+<!ELEMENT bd-abedemon (especie*, ataque*)> <!--bd-abedemon va a contener dos listas de elementos: especies y ataques-->
+
+<!ELEMENT especie (nombre, url, descripcion, tipo+, ataques?, evoluciones?)>  <!--una especie tiene una lista de tipos (al menos 1), así como de ataques(puede no tener) y evoluciones(puede no tener una lista de evoluciones (LISTA SOLO 1, la lista contendra una o varios elementos evolucion)) -->
+<!ATTLIST especie id ID #REQUIRED>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+<!ELEMENT tipo (#PCDATA)>
+<!ELEMENT ataques (tiene-ataque+)>
+<!ELEMENT tiene-ataque EMPTY>
+<!ATTLIST tiene-ataque id IDREF #REQUIRED>
+<!ELEMENT evoluciones (especie+)>  <!--la lista evoluciones puede contener de una a varias evoluciones posibles (+ -> si no hay elementos evolucion entonces no hay lista evoluciones (?))-->
+
+<!ELEMENT ataque (nombre, daño+)>
+<!ATTLIST ataque id ID #REQUIRED>
+ <!-- el elemento nombre ya se definió en especie -->
+<!ELEMENT daño EMPTY>
+<!ATTLIST daño tipo CDATA #REQUIRED>
+<!ATTLIST daño valor CDATA #REQUIRED>
